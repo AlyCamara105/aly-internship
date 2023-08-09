@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { hover } from "@testing-library/user-event/dist/hover";
 
 const HotCollections = () => {
   const [collectionData, setCollectionData] = useState(null);
@@ -138,8 +137,8 @@ const HotCollections = () => {
           </div>
           <Slider {...settings}>
             {collectionData
-              ? collectionData.map((collection) => (
-                  <div className="nft_coll">
+              ? collectionData.map((collection, index) => (
+                  <div key={index} className="nft_coll">
                     <div className="nft_wrap">
                       <Link to={"/item-details/" + collection.nftId}>
                         <img
@@ -167,8 +166,8 @@ const HotCollections = () => {
                     </div>
                   </div>
                 ))
-              : new Array(6).fill(0).map(() => (
-                  <div className="nft_coll">
+              : new Array(6).fill(0).map((_, index) => (
+                  <div key={index} className="nft_coll">
                     <div className="nft_wrap">
                       <Skeleton width={340} height={200} borderRadius={10} />
                     </div>
