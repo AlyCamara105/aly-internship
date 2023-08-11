@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-function Item({ item }) {
-  let [time, setTime] = useState(null);
-  let [lastIntervalId, setLastIntervalId] = useState(null);
+function Item({ item, authorImage, authorId }) {
+  const [time, setTime] = useState(null);
+  const [lastIntervalId, setLastIntervalId] = useState(null);
 
   function setCountdown() {
     let countdownEpochDiff = item.expiryDate - Date.now();
@@ -33,12 +33,12 @@ function Item({ item }) {
     <div className="nft__item">
       <div className="author_list_pp">
         <Link
-          to={"/author/" + item.authorId}
+          to={"/author/" + (item.authorId || authorId)}
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           title="Creator: Monica Lucas"
         >
-          <img className="lazy" src={item.authorImage} alt="" />
+          <img className="lazy" src={item.authorImage || authorImage} alt="" />
           <i className="fa fa-check"></i>
         </Link>
       </div>
