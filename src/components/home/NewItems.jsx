@@ -124,7 +124,13 @@ const NewItems = () => {
   }, []);
 
   return (
-    <section id="section-items" className="no-bottom">
+    <section
+      data-aos="fade-in"
+      data-aos-duration={1000}
+      data-aos-once={true}
+      id="section-items"
+      className="no-bottom"
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
@@ -165,7 +171,7 @@ const NewItems = () => {
 
                       <Skeleton height={225} width={300} borderRadius={10} />
                     </div>
-                    
+
                     <div className="nft__item_info">
                       <Skeleton height={40} width={175} borderRadius={10} />
                     </div>
