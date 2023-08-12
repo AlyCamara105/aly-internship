@@ -36,7 +36,10 @@ const ExploreItems = () => {
       );
 
       setExploreItemsData(response.data);
-      setExploreItems(response.data.slice(0, row * 4));
+      setExploreItems(null);
+      setTimeout(() => {
+        setExploreItems(response.data.slice(0, row * 4));
+      }, 100);
     }
 
     LoadData();
@@ -75,7 +78,7 @@ const ExploreItems = () => {
               <Item item={exploreItem} />
             </div>
           ))
-        : new Array(12).fill(0).map((_, index) => (
+        : new Array(row * 4).fill(0).map((_, index) => (
             <div
               key={index}
               className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"

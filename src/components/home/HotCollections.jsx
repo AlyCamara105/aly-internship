@@ -126,7 +126,13 @@ const HotCollections = () => {
   }, []);
 
   return (
-    <section id="section-collections" className="no-bottom">
+    <section
+      data-aos="fade-in"
+      data-aos-duration={1000}
+      data-aos-once={true}
+      id="section-collections"
+      className="no-bottom"
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
