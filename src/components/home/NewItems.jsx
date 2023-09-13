@@ -3,6 +3,10 @@ import axios from "axios";
 import Slider from "react-slick";
 import Item from "../UI/Item";
 import Skeleton from "../UI/Skeleton";
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
 
 const NewItems = () => {
   const [newItemsData, setNewItemsData] = useState(null);
@@ -11,34 +15,28 @@ const NewItems = () => {
     const { className, style, onClick } = props;
     return (
       <div
-        className="relative"
         style={{
           ...style,
-          display: "block",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           background: "white",
           borderRadius: "1000px",
-          padding: "3px",
-          width: "50px",
-          height: "50px",
-          right: "-10px",
-          top: "220px",
+          padding: "0.5px",
+          right: "14px",
+          right: "-5px",
+          top: "200px",
           zIndex: "10",
           position: "absolute",
-          border: "1px solid black",
-          opacity: "0.7",
+          width: "45px",
+          height: "45px",
+          border: "1px solid #727272",
         }}
+        className="arrow__container"
+        onClick={onClick}
       >
-        <div
-          className={className}
-          style={{
-            ...style,
-            display: "block",
-            background: "black",
-            borderRadius: "1000px",
-            padding: "0.5px",
-            right: "14px",
-          }}
-          onClick={onClick}
+        <MdOutlineKeyboardArrowRight
+          style={{ ...style, height: "75%", width: "75%", color: "black" }}
         />
       </div>
     );
@@ -48,34 +46,28 @@ const NewItems = () => {
     const { className, style, onClick } = props;
     return (
       <div
-        className="relative"
         style={{
           ...style,
-          display: "block",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           background: "white",
           borderRadius: "1000px",
-          padding: "3px",
-          width: "50px",
-          height: "50px",
+          padding: "0.5px",
+          right: "14px",
           left: "-5px",
-          top: "220px",
+          top: "200px",
           zIndex: "10",
           position: "absolute",
-          border: "1px solid black",
-          opacity: "0.7",
+          width: "45px",
+          height: "45px",
+          border: "1px solid #727272",
         }}
+        className="arrow__container"
+        onClick={onClick}
       >
-        <div
-          className={className}
-          style={{
-            ...style,
-            display: "block",
-            background: "black",
-            borderRadius: "1000px",
-            padding: "0.5px",
-            left: "14px",
-          }}
-          onClick={onClick}
+        <MdOutlineKeyboardArrowLeft
+          style={{ ...style, height: "75%", width: "75%", color: "black" }}
         />
       </div>
     );
@@ -142,7 +134,9 @@ const NewItems = () => {
           <Slider {...settings}>
             {newItemsData
               ? newItemsData.map((item, index) => (
-                  <Item key={index} item={item} />
+                  <div className="carousel__item__wrapper">
+                    <Item key={index} item={item} />
+                  </div>
                 ))
               : new Array(6).fill(0).map((_, index) => (
                   <div key={index} className="nft__item">

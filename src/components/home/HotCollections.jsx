@@ -5,79 +5,71 @@ import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
 
 const HotCollections = () => {
   const [collectionData, setCollectionData] = useState(null);
 
   function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
+    const { style, onClick } = props;
     return (
       <div
-        className="relative"
         style={{
           ...style,
-          display: "block",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           background: "white",
           borderRadius: "1000px",
-          padding: "3px",
-          width: "50px",
-          height: "50px",
-          right: "-10px",
+          padding: "0.5px",
+          right: "14px",
+          right: "-5px",
           top: "150px",
           zIndex: "10",
           position: "absolute",
-          border: "1px solid black",
-          opacity: "0.7",
+          width: "45px",
+          height: "45px",
+          border: "1px solid #727272",
         }}
+        className="arrow__container"
+        onClick={onClick}
       >
-        <div
-          className={className}
-          style={{
-            ...style,
-            display: "block",
-            background: "black",
-            borderRadius: "1000px",
-            padding: "0.5px",
-            right: "14px",
-          }}
-          onClick={onClick}
+        <MdOutlineKeyboardArrowRight
+          style={{ ...style, height: "75%", width: "75%", color: "black" }}
         />
       </div>
     );
   }
 
   function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
+    const { style, onClick } = props;
     return (
       <div
-        className="relative"
         style={{
           ...style,
-          display: "block",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           background: "white",
           borderRadius: "1000px",
-          padding: "3px",
-          width: "50px",
-          height: "50px",
+          padding: "0.5px",
+          right: "14px",
           left: "-5px",
           top: "150px",
           zIndex: "10",
           position: "absolute",
-          border: "1px solid black",
-          opacity: "0.7",
+          width: "45px",
+          height: "45px",
+          border: "1px solid #727272",
         }}
+        className="arrow__container"
+        onClick={onClick}
       >
-        <div
-          className={className}
-          style={{
-            ...style,
-            display: "block",
-            background: "black",
-            borderRadius: "1000px",
-            padding: "0.5px",
-            left: "14px",
-          }}
-          onClick={onClick}
+        <MdOutlineKeyboardArrowLeft
+          style={{ ...style, height: "75%", width: "75%", color: "black" }}
         />
       </div>
     );
@@ -144,31 +136,33 @@ const HotCollections = () => {
           <Slider {...settings}>
             {collectionData
               ? collectionData.map((collection, index) => (
-                  <div key={index} className="nft_coll">
-                    <div className="nft_wrap">
-                      <Link to={"/item-details/" + collection.nftId}>
-                        <img
-                          src={collection.nftImage}
-                          className="lazy img-fluid"
-                          alt=""
-                        />
-                      </Link>
-                    </div>
-                    <div className="nft_coll_pp">
-                      <Link to={"/author/" + collection.authorId}>
-                        <img
-                          className="lazy pp-coll"
-                          src={collection.authorImage}
-                          alt=""
-                        />
-                      </Link>
-                      <i className="fa fa-check"></i>
-                    </div>
-                    <div className="nft_coll_info">
-                      <Link to="/explore">
-                        <h4>{collection.title}</h4>
-                      </Link>
-                      <span>ERC-{collection.code}</span>
+                  <div className="carousel__item__wrapper">
+                    <div key={index} className="nft_coll">
+                      <div className="nft_wrap">
+                        <Link to={"/item-details/" + collection.nftId}>
+                          <img
+                            src={collection.nftImage}
+                            className="lazy img-fluid"
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                      <div className="nft_coll_pp">
+                        <Link to={"/author/" + collection.authorId}>
+                          <img
+                            className="lazy pp-coll"
+                            src={collection.authorImage}
+                            alt=""
+                          />
+                        </Link>
+                        <i className="fa fa-check"></i>
+                      </div>
+                      <div className="nft_coll_info">
+                        <Link to="/explore">
+                          <h4>{collection.title}</h4>
+                        </Link>
+                        <span>ERC-{collection.code}</span>
+                      </div>
                     </div>
                   </div>
                 ))

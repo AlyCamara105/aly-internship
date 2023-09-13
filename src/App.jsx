@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import "aos/dist/aos.css";
 import "aos/dist/aos.js";
 import Aos from "aos";
+import "./css/components/arrows.css";
+import "./css/components/carouselItem.css";
 
 function App() {
   Aos.init();
